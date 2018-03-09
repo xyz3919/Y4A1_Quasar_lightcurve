@@ -1,6 +1,10 @@
 #Y4A1_Quasar_lightcurve
 
-File description:
+
+Now, I only put 5 qusars for test. Will update the directory for whole catalog later.
+
+
+-- File description:
 
 1. quasar_catalog.csv: the master quasar catalog contain main information(ra,dec,redshift,N_<band>)
    (N_<band>: the number of measurment in each band)
@@ -14,4 +18,12 @@ File description:
 5. fitting.py: The light curve generation script.
 
 6. query.py: The script query DES database to get single_epoch objects.
+
+-- Comment:
+
+The flux is already the calibrated flux "nanomaggies".
+The conversion to to magnitudes is:
+
+ Mag = 22.5 - 2.5 log10(Flux)
+
 

@@ -1,10 +1,10 @@
-#Y4A1_Quasar_lightcurve
+# Y4A1_Quasar_lightcurve
 
 
 Now, I only put 5 qusars for test. Will update the directory for whole catalog later.
 
 
--- File description:
+## File description:
 
 1. quasar_catalog.csv: the master quasar catalog contain main information(ra,dec,redshift,N_<band>)
    (N_<band>: the number of measurment in each band)
@@ -19,7 +19,7 @@ Now, I only put 5 qusars for test. Will update the directory for whole catalog l
 
 6. query.py: The script query DES database to get single_epoch objects.
 
--- Comment:
+## Comment:
 
 The flux is already the calibrated flux "nanomaggies".
 The conversion to to magnitudes is:

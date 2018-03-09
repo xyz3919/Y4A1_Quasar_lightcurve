@@ -6,12 +6,12 @@ Now, I only put 5 qusars for test. Will update the directory for the whole catal
 
 ## File description:
 
-1. quasar_catalog.csv: the master quasar catalog contain main information(ra,dec,redshift,N_<band>)
-   (N_<band>: the number of measurment in each band)
+1. quasar_catalog.csv: the master quasar catalog contain main information(ra,dec,redshift,N_[band])
+   (N_[band]: the number of measurment in each band)
         
 2. lightcurve: The directory which contain the light curve for each quasar in each band.
 
-3. lightcurve/<tragetname>/<band>.csv: The lightcurve data including MJD_OBS,FLUX_PSF,FLUX_ERR_PSF,FLUX_AUTO,FLUX_ERR_AUTO.
+3. lightcurve/[tragetname]/[band>].csv: The lightcurve data including MJD_OBS,FLUX_PSF,FLUX_ERR_PSF,FLUX_AUTO,FLUX_ERR_AUTO.
 
 4. lightcurve.zip: the zip file of lightcurve.
 

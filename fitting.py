@@ -80,10 +80,10 @@ if __name__ == '__main__':
 
     catalog = read_single_epoch_catalog()
     quasar_catalog = load_quasar_catalog()
-    f = open("quasar_catalog.list","w")
-    f.write("name,ra,dec,mag_r,field,redshift,N_g,N_r,N_i,_N_Y,N_z\n")
-    band_list = ["g","r","i","Y","z"]
-    for quasar in quasar_catalog[0:1]:
+    f = open("quasar_catalog.csv","w")
+    f.write("name,ra,dec,mag_r,field,redshift,N_g,N_r,N_i,_N_z\n")
+    band_list = ["g","r","i","z"]
+    for quasar in quasar_catalog[0:2]:
         ra = quasar[0]
         dec = quasar[1]
         region = quasar[3]
@@ -100,8 +100,8 @@ if __name__ == '__main__':
                 f.write(","+str(len(matched_quasars)))
                 matched_quasars.to_csv("lightcurve/"+name+"/"+band+".csv",index=False,columns=["MJD_OBS","FLUX_PSF","FLUX_ERR_PSF","FLUX_AUTO","FLUX_ERR_AUTO"])
         f.write("\n")
-        
     f.close()
+    os.system("zip -r lightcurve.zip lightcurve")
 #    print find_the_quasars(test[0],test[1],"r",catalog[test[3]])
 
 

@@ -81,7 +81,7 @@ if __name__ == '__main__':
     catalog = read_single_epoch_catalog()
     quasar_catalog = load_quasar_catalog()
     f = open("quasar_catalog.csv","w")
-    f.write("name,ra,dec,mag_r,field,redshift,N_g,N_r,N_i,N_z\n")
+    f.write("name,ra,dec,mag_r,field,redshift,flag,N_g,N_r,N_i,N_z\n")
     band_list = ["g","r","i","z"]
     for quasar in quasar_catalog[0:5]:
         ra = quasar[0]

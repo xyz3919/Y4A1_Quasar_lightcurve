@@ -1,7 +1,7 @@
 # Y4A1_Quasar_lightcurve
 
 
-Now, I only put 5 qusars for test. Will update the directory for whole catalog later.
+Now, I only put 5 qusars for test. Will update the directory for the whole catalog later.
 
 
 ## File description:

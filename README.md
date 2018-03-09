@@ -22,7 +22,7 @@ Now, I only put 5 qusars for test. Will update the directory for the whole catal
 ## Comment:
 
 The flux is already the calibrated flux "nanomaggies".
-The conversion to to magnitudes is:
+The conversion to the magnitude is:
 ```
  Mag = 22.5 - 2.5 log10(Flux)
 ```

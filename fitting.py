@@ -81,23 +81,23 @@ if __name__ == '__main__':
     catalog = read_single_epoch_catalog()
     quasar_catalog = load_quasar_catalog()
     f = open("quasar_catalog.csv","w")
-    f.write("# name ra dec mag_r field redshift N_g N_r N_i N_z\n")
+    f.write("name,ra,dec,mag_r,field,redshift,N_g,N_r,N_i,N_z\n")
     band_list = ["g","r","i","z"]
-    for quasar in quasar_catalog[0:2]:
+    for quasar in quasar_catalog[0:5]:
         ra = quasar[0]
         dec = quasar[1]
         region = quasar[3]
         name = degtohexname(ra,dec)
-        f.write(name+" ")
-        f.write(" ".join(np.array(quasar).astype(str)))
+        f.write(name+",")
+        f.write(",".join(np.array(quasar).astype(str)))
         create_dir("lightcurve/"+name)
         for band in band_list:
             matched_quasars = find_the_quasars(name,ra,dec,band,catalog[region])
             if matched_quasars is None:
                 print "No data found !"
-                f.write(" 0")
+                f.write(",0")
             else:
-                f.write(" "+str(len(matched_quasars)))
+                f.write(","+str(len(matched_quasars)))
                 matched_quasars.to_csv("lightcurve/"+name+"/"+band+".csv",index=False,columns=["MJD_OBS","FLUX_PSF","FLUX_ERR_PSF","FLUX_AUTO","FLUX_ERR_AUTO"])
         f.write("\n")
     f.close()

@@ -1,0 +1,48 @@
+updating: lightcurve/ (stored 0%)
+updating: lightcurve/J064018.84-424900.38/ (stored 0%)
+updating: lightcurve/J064018.84-424900.38/g.csv (deflated 53%)
+updating: lightcurve/J064018.84-424900.38/i.csv (deflated 53%)
+updating: lightcurve/J064018.84-424900.38/z.csv (deflated 55%)
+updating: lightcurve/J064018.84-424900.38/r.csv (deflated 53%)
+updating: lightcurve/J063957.89-432307.77/ (stored 0%)
+updating: lightcurve/J063957.89-432307.77/g.csv (deflated 52%)
+updating: lightcurve/J063957.89-432307.77/i.csv (deflated 53%)
+updating: lightcurve/J063957.89-432307.77/z.csv (deflated 54%)
+updating: lightcurve/J063957.89-432307.77/r.csv (deflated 53%)
+  adding: lightcurve/J064320.82-430438.63/ (stored 0%)
+  adding: lightcurve/J064320.82-430438.63/g.csv (deflated 53%)
+  adding: lightcurve/J064320.82-430438.63/i.csv (deflated 52%)
+  adding: lightcurve/J064320.82-430438.63/z.csv (deflated 54%)
+  adding: lightcurve/J064320.82-430438.63/r.csv (deflated 53%)
+  adding: lightcurve/J064532.50-431756.04/ (stored 0%)
+  adding: lightcurve/J064532.50-431756.04/g.csv (deflated 52%)
+  adding: lightcurve/J064532.50-431756.04/i.csv (deflated 53%)
+  adding: lightcurve/J064532.50-431756.04/z.csv (deflated 55%)
+  adding: lightcurve/J064532.50-431756.04/r.csv (deflated 53%)
+  adding: lightcurve/J064908.74-424427.99/ (stored 0%)
+  adding: lightcurve/J064908.74-424427.99/g.csv (deflated 53%)
+  adding: lightcurve/J064908.74-424427.99/i.csv (deflated 54%)
+  adding: lightcurve/J064908.74-424427.99/z.csv (deflated 55%)
+  adding: lightcurve/J064908.74-424427.99/r.csv (deflated 53%)
+--- Loading the single epoch catalog at E1 ---
+--- Finished ---
+- Fitting  J063957.89-432307.77 g
+- Fitting  J063957.89-432307.77 r
+- Fitting  J063957.89-432307.77 i
+- Fitting  J063957.89-432307.77 z
+- Fitting  J064018.84-424900.38 g
+- Fitting  J064018.84-424900.38 r
+- Fitting  J064018.84-424900.38 i
+- Fitting  J064018.84-424900.38 z
+- Fitting  J064320.82-430438.63 g
+- Fitting  J064320.82-430438.63 r
+- Fitting  J064320.82-430438.63 i
+- Fitting  J064320.82-430438.63 z
+- Fitting  J064532.50-431756.04 g
+- Fitting  J064532.50-431756.04 r
+- Fitting  J064532.50-431756.04 i
+- Fitting  J064532.50-431756.04 z
+- Fitting  J064908.74-424427.99 g
+- Fitting  J064908.74-424427.99 r
+- Fitting  J064908.74-424427.99 i
+- Fitting  J064908.74-424427.99 z

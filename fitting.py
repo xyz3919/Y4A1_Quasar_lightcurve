@@ -4,6 +4,7 @@ import pandas as pd
 from astropy.io import fits
 from astropy.coordinates import SkyCoord
 from astropy import units as u
+import plot
 
 def load_quasar_catalog():
 
@@ -17,6 +18,7 @@ def load_quasar_catalog():
 
 def degtohexname(ra,dec):
 
+    ra = ra/15.
     rah=int(ra)
     ram=int(60*(ra-rah))
     ras=3600.*(ra-rah-(ram/60.))
@@ -61,8 +63,8 @@ def find_the_quasars(name,ra,dec,band,all_objects):
 def read_single_epoch_catalog():
 
     catalog = {}
-    fieldname = ["E1","E2","S1","S2","C1","C2","C3","X1","X2","X3"]
-    fieldname = ["E1"]
+#    fieldname = ["E1","E2","S1","S2","C1","C2","C3","X1","X2","X3"]
+    fieldname = ["E1","S2"]
     for field in fieldname:
         print "--- Loading the single epoch catalog at "+field+" ---"
 #        data = pd.read_csv(field+".csv",sep=" ",names=["RA","DEC","MJD_OBS","FLUX_PSF","FLUX_ERR_PSF","FLUX_AUTO","FLUX_ERR_AUTO","BAND"],dtype={"RA":float,"DEC":float,"MJD_OBS":float,"FLUX_PSF":float,"FLUX_ERR_PSF":float,"FLUX_AUTO":float,"FLUX_ERR_AUTO":float,"BAND":str})
@@ -71,37 +73,50 @@ def read_single_epoch_catalog():
     print "--- Finished ---"
     return catalog
 
+def write_header(output):
+
+    f = open(output,"w")
+    f.write("name,ra,dec,mag_r,field,redshift,flag,N_g,N_r,N_i,N_z\n")
+    f.close()
+
 def create_dir(directory):
 
     if not os.path.exists(directory):
         os.makedirs(directory)
 
+def generate_lightcurve(quasar,catalog,save_catalog):
+
+    ra = float(quasar[0])
+    dec = float(quasar[1])
+    region = quasar[3]
+    name = degtohexname(ra,dec)
+    f = open(save_catalog,"a")
+    f.write(name+",")
+    f.write(",".join(np.array(quasar).astype(str)))
+    create_dir("lightcurve/"+name)
+    for band in band_list:
+        matched_quasars = find_the_quasars(name,ra,dec,band,catalog[region])
+        if matched_quasars is None:
+            print "No data found !"
+            f.write(",0")
+        else:
+            f.write(","+str(len(matched_quasars)))
+            matched_quasars.to_csv("lightcurve/"+name+"/"+band+".csv",index=False,columns=["MJD_OBS","FLUX_PSF","FLUX_ERR_PSF","FLUX_AUTO","FLUX_ERR_AUTO"])
+    f.write("\n")
+    f.close()
+    return name
+
 if __name__ == '__main__':
 
     catalog = read_single_epoch_catalog()
     quasar_catalog = load_quasar_catalog()
-    f = open("quasar_catalog.csv","w")
-    f.write("name,ra,dec,mag_r,field,redshift,flag,N_g,N_r,N_i,N_z\n")
+    save_catalog = "quasar_catalog.csv"
+    write_header(save_catalog)
     band_list = ["g","r","i","z"]
-    for quasar in quasar_catalog[0:5]:
-        ra = quasar[0]
-        dec = quasar[1]
-        region = quasar[3]
-        name = degtohexname(ra,dec)
-        f.write(name+",")
-        f.write(",".join(np.array(quasar).astype(str)))
-        create_dir("lightcurve/"+name)
-        for band in band_list:
-            matched_quasars = find_the_quasars(name,ra,dec,band,catalog[region])
-            if matched_quasars is None:
-                print "No data found !"
-                f.write(",0")
-            else:
-                f.write(","+str(len(matched_quasars)))
-                matched_quasars.to_csv("lightcurve/"+name+"/"+band+".csv",index=False,columns=["MJD_OBS","FLUX_PSF","FLUX_ERR_PSF","FLUX_AUTO","FLUX_ERR_AUTO"])
-        f.write("\n")
-    f.close()
+    for quasar in quasar_catalog[0:5]+quasar_catalog[2001:2006]:
+        target = generate_lightcurve(quasar,catalog,save_catalog)
+        plot.plot_lightcurve(target,plot.load_lightcurve(target))
     os.system("zip -r lightcurve.zip lightcurve")
+    
 #    print find_the_quasars(test[0],test[1],"r",catalog[test[3]])
-
 
